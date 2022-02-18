@@ -1,9 +1,12 @@
+#nao esta usando nesse arquivo
 import time
 import pandas as pd
 import json
-import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+
+#esta usando
+import requests
 import numpy
 import Cep
 import openpyxl
@@ -15,9 +18,10 @@ book  = openpyxl.Workbook()
 print(book.sheetnames)
 #criar pagina
 book.create_sheet('cidades')
-#selecionar ágina
+#selecionar página
 cidades = book['cidades']
 
+#criação da primeira linha
 cidades.append(['CIDADE','ESTADO','CEP','IBGE'])
 #============================
 
@@ -38,28 +42,35 @@ while cont < arrsize:
     res = requests.get(url)
     res = res.json()
     erro = res
-    print(erro)
     #DECLARANDO DADOS A SER SALVO
 
+    #verifica se a api do ibge retorna erro
     if erro == {'erro': True}:
+        #se retornar erro mostra no terminal que nao encontro o ibge
         print('nao encontrado')
+        #na tabela (exel) adciona um as colnao como nao encontrado, com o cep pesquisado
         cidades.append(['nao encontrado', 'nao encontrado', cep[cont], 'nao encontrado'])
         cont += 1
     else:
+        #caso nao tenha erro pega as variavei do objeto retornado
         ibge = (res['ibge'])
         uf = (res['uf'])
         cepurl = (res['cep'])
         localidade = (res['localidade'])
-        s = ' '
-        planilha.append( localidade + s + uf + ' CEP: ' + cepurl + " IBGE : " +  ibge)
+
+        #vai adcionar um array com todos os dados de cada cep pesquisados
+        planilha.append( localidade + ' ' + uf + ' CEP: ' + cepurl + " IBGE : " +  ibge)
+
         #print(localidade + s + uf + ' CEP: ' + cepurl + " IBGE : " +  ibge )
+        # print no status de busca
         print('buscando IBGE: {}'.format(cont))
 
-        #MONTANDO PLANILHA
-        cidades.append([localidade,uf,cepurl,ibge])
+        #MONTANDO PLANILHA com os dados
+        cidades.append([localidade,uf,cepurl,ibge])#cada  dado e uma coluna
         cont += 1
 
-
+#print no arr com todas as planilhas
 print(planilha)
-#SALVANDO PLANILHA
-book.save('testeErro.xlsx')
+
+#SALVANDO PLANILHA com nome e extensao
+book.save('planilha200A400.xlsx')
