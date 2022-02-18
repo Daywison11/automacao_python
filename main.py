@@ -23,7 +23,7 @@ cidades.append(['CIDADE','ESTADO','CEP','IBGE'])
 
 #=========================
 #BUSCA IBGE MAIS CEP
-cep = ['33820400','30000300','33820400']
+cep = Cep.buscarCeps()
 print(cep)
 planilha = []
 cont = int(0)
@@ -40,6 +40,7 @@ while cont < arrsize:
     erro = res
     print(erro)
     #DECLARANDO DADOS A SER SALVO
+
     if erro == {'erro': True}:
         print('nao encontrado')
         cidades.append(['nao encontrado', 'nao encontrado', cep[cont], 'nao encontrado'])

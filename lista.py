@@ -20,7 +20,7 @@ def ListaDeCidade():
     element = driver.page_source
 
     elemento = str(element)
-    city = pd.read_html(elemento,index_col=3)[0].head(300)
+    city = pd.read_html(elemento,index_col=3, skiprows=100)[0].head(100)
 
     cidade = city.index
     driver.quit()
