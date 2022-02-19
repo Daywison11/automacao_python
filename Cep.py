@@ -49,9 +49,12 @@ def buscarCeps():
         #fechando navegador
         driver.quit()
 
+        print('<table class="table s_table_box table-striped table-responsive"> 'in elemento)
+
         #essa validadação foi a que te falei que nao funciona muito bem, mas dexei mesmo assim
         #era pra validar se uma tabela com 4 coluna  no html
-        if (pd.read_html(elemento, index_col=4)):
+
+        if ('<table class="table s_table_box table-striped table-responsive"> ' in elemento):
             #pega os dados da coluna 4 e passar para a coluna um
             dados = pd.read_html(elemento, index_col=4)[0]
 
@@ -70,3 +73,5 @@ def buscarCeps():
             ceps.append('00000-000')
 
     return ceps
+
+buscarCeps()

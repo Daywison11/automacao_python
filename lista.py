@@ -32,13 +32,13 @@ def ListaDeCidade():
     # a coluna que eu quero que seja a primeira, no caso passa da 3 para a index, >>(index_col=)<<
     # e o numero de linhas a serem ignoradas. >>(skiprows=100)<<
     # e o numero maximo de linhas que eu quero >>(.head(numero))<<
-    city = pd.read_html(elemento,index_col=3, skiprows=100)[0].head(200)
+    city = pd.read_html(elemento,index_col=3, skiprows=100)[0].head(5)
 
     # pegando a primeira coluna e armazenando em cidades
     cidade = city.index
 
     #para o codigo antes de passar para a linha de baixo (segundos)
-    time.sleep(5)
+    time.sleep(10)
 
     #fecha a pagina com a tabela
     driver.quit()
