@@ -10,8 +10,10 @@ def ListaDeCidade():
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options
     import numpy
-#Pegar conteudo HTML a partir da URL
+    #Pegar conteudo HTML a partir da URL
     url = "file:///C:/Users/Daywison/Documents/automa%C3%A7%C3%A3o%20python/table.html"
+
+
 
 
     option = Options()
@@ -32,7 +34,7 @@ def ListaDeCidade():
     # a coluna que eu quero que seja a primeira, no caso passa da 3 para a index, >>(index_col=)<<
     # e o numero de linhas a serem ignoradas. >>(skiprows=100)<<
     # e o numero maximo de linhas que eu quero >>(.head(numero))<<
-    city = pd.read_html(elemento,index_col=3, skiprows=100)[0].head(5)
+    city = pd.read_html(elemento,index_col=3, skiprows=3000)[0]
 
     # pegando a primeira coluna e armazenando em cidades
     cidade = city.index
