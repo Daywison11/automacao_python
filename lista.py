@@ -13,7 +13,7 @@ def ListaDeCidade():
     import numpy
     #Pegar conteudo HTML a partir da URL
 
-    url = "file:///C:/Users/Daywison/Documents/Arquivos%20de%20programa%C3%A7%C3%A3o/automacao_python/table2.html"
+    url = "file:///C:/Users/Daywison/Documents/Arquivos%20de%20programa%C3%A7%C3%A3o/automacao_python/table.html"
 
     option = Options()
     option.headless = True
