@@ -1,12 +1,12 @@
 #nao esta usando nesse arquivo
 from os import stat
-import time
 import pandas as pd
 import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 #esta usando
+import time
 import random
 import requests
 import numpy
@@ -106,4 +106,4 @@ while cont < arrsize:
 print(planilha)
 
 #SALVANDO PLANILHA com nome e extensao
-book.save('planilhaDo3000-ate-final.xlsx')
+book.save('teste20.xlsx')

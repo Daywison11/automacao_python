@@ -47,13 +47,16 @@ def buscarCeps():
 
         print('<table class="table s_table_box table-striped table-responsive"> 'in elemento)
 
-        #essa validadação foi a que te falei que nao funciona muito bem, mas dexei mesmo assim
-        #era pra validar se uma tabela com 4 coluna  no html
+
+        #valida se esse tag com essa classe existe no HTML em que e feira a req
+        #caso contrario significa que o cep nao foi encontrado.
+        #nesse caso retornamos o valor de cep como 00000-000
 
         if ('<table class="table s_table_box table-striped table-responsive"> ' in elemento):
-            #pega os dados da coluna 4 e passar para a coluna um
+            #pega os dados da coluna 4 e passar para a coluna um (index)
             dados = pd.read_html(elemento, index_col=4)[0]
             #era pra pegar a cidade do cep , mas nem todos tinham, entao deixei pra pegar junto com o ibge
+            #no caso na api do viacep
             city = pd.read_html(elemento, index_col=2)[0]
 
             #var recebe os dados da primeira coluna (index)
@@ -63,10 +66,8 @@ def buscarCeps():
             ceps.append(cep)
 
         else:
-            #caso nao encontrasse era pra retornar esse cep
-            # so que nao funciona
+            #caso nao encontrar o cep retorna o cep como
             ceps.append('00000-000')
 
     return ceps
-
 
